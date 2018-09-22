@@ -1,10 +1,13 @@
 ﻿using System.Threading.Tasks;
-using Mmu.Wss.Application.Areas.EventPublishing.Models;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.MouseHooking.Domain.Models;
 
 namespace Mmu.Wss.Application.Areas.EventPublishing.Services
 {
     internal interface IEventPublishingService
     {
-        Task PublishAsync(KeyboardInputNotification notification);
+        Task PublishKeyboardEventAsync(KeyboardInput keyboardInput);
+
+        Task PublishMouseEventAsync(MouseInput mouseInput);
     }
 }

@@ -43,8 +43,11 @@
     <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.36.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.36\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.15\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.2.0.1\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Mmu.Mlh.NetFrameworkExtensions, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.NetFrameworkExtensions.2.0.5\lib\net472\Mmu.Mlh.NetFrameworkExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -71,43 +74,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas\ContainerInitialization\Services\ContainerInitializationService.cs" />
-    <Compile Include="Areas\ContainerInitialization\Services\Servants\AssemblyFetcher.cs" />
-    <Compile Include="Areas\EventPublishing\Models\KeyboardInputNotification.cs" />
-    <Compile Include="Areas\EventPublishing\Models\ModifierConfiguration.cs" />
-    <Compile Include="Areas\EventPublishing\Models\NotificationConfiguration.cs" />
-    <Compile Include="Areas\EventPublishing\Models\Option.cs" />
+    <Compile Include="Areas\EventPublishing\Services\Servants\IEventReceiverFactory.cs" />
+    <Compile Include="Areas\EventPublishing\Services\Servants\Implementation\EventReceiverFactory.cs" />
+    <Compile Include="Areas\EventReceiving\Services\IKeyboardEventReceiver.cs" />
+    <Compile Include="Areas\EventReceiving\Services\IMouseEventReceiver.cs" />
+    <Compile Include="Areas\EventRegistrations\Common\Models\IEventConfiguration.cs" />
+    <Compile Include="Areas\EventRegistrations\Common\Models\EventRegistration.cs" />
+    <Compile Include="Areas\EventRegistrations\Common\Services\EventRegistrationService.cs" />
+    <Compile Include="Areas\EventRegistrations\KeyboardEventConfigurations\KeyboardInputKeyConfiguration.cs" />
+    <Compile Include="Areas\EventRegistrations\KeyboardEventConfigurations\LockConfiguration.cs" />
+    <Compile Include="Areas\EventRegistrations\MouseEventConfigurations\MouseEventConfiguration.cs" />
+    <Compile Include="Areas\WindowsNativeListening\Services\Implementation\NativeInputListener.cs" />
+    <Compile Include="Areas\WindowsNativeListening\Services\INativeInputListener.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Areas\EventRegistrations\KeyboardEventConfigurations\ModifierConfiguration.cs" />
+    <Compile Include="Areas\EventRegistrations\KeyboardEventConfigurations\KeyboardEventConfiguration.cs" />
+    <Compile Include="Areas\Common\Models\Option.cs" />
     <Compile Include="Areas\EventPublishing\Services\IEventPublishingService.cs" />
-    <Compile Include="Areas\EventPublishing\Services\IEventSubscriber.cs" />
+    <Compile Include="Areas\EventReceiving\Services\IEventReceiver.cs" />
     <Compile Include="Areas\EventPublishing\Services\Implementation\EventPublishingService.cs" />
-    <Compile Include="Areas\Initialization\InitializationService.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Implementation\WindowsKeyboardInputFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\IWindowsKeyboardInputFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\IKeyboardInputKeyMappingServant.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\ILockOptionsFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\IModifierOptionsFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\Implementation\DllImports.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\Implementation\KeyboardInputKeyMappingServant.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\Implementation\LockOptionsFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Factories\Servants\Implementation\ModifierOptionsFactory.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\HookType.cs" />
-    <Compile Include="Areas\WindowsEventListening\Services\Implementation\WindowsEventListenerService.cs" />
-    <Compile Include="Areas\WindowsEventListening\Services\IWindowsEventListenerService.cs" />
+    <Compile Include="Areas\Initialization\BootstrapService.cs" />
     <Compile Include="Infrastructure\DependencyInjection\ApplicationRegistry.cs" />
-    <Compile Include="Infrastructure\WindowsNative\ActionHandling\InvokeActionHandler.cs" />
-    <Compile Include="Infrastructure\WindowsNative\Delegates\KeyDownEventHandler.cs" />
-    <Compile Include="Infrastructure\WindowsNative\Delegates\KeyUpEventHandler.cs" />
-    <Compile Include="Infrastructure\WindowsNative\Delegates\LowLevelKeyboardProc.cs" />
-    <Compile Include="Infrastructure\WindowsNative\EventArguments\KeyHandlerEventArgs.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\HookingEvent.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\KeyboardInputKey.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\LockOptions.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\ModifierOptions.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Models\KeyboardInput.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Services\IKeyHookService.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Services\Implementation\KeyHookService.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Services\Servants\CommandConstants.cs" />
-    <Compile Include="Infrastructure\WindowsNative\KeyHooks\Services\Servants\DllImports.cs" />
+    <Compile Include="Infrastructure\Logging\IWssLoggingService.cs" />
+    <Compile Include="Infrastructure\Logging\Implementation\WssLoggingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +112,7 @@
     <Analyzer Include="..\..\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

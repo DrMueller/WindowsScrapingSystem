@@ -1,0 +1,2 @@
+Windows Services are started before the user is logged in and can't therefore not hook into the inputs
+See also http://forums.codeguru.com/showthread.php?389394-Windows-Service-amp-Keyboard-hook

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mmu.Wss.TestListener")]
+[assembly: AssemblyTitle("Mmu.Wss.TaskRunner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mmu.Wss.TestListener")]
+[assembly: AssemblyProduct("Mmu.Wss.TaskRunner")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6fbf0974-0e44-4850-a17c-0ea835f962ad")]
+[assembly: Guid("0806055b-9943-4a68-8e63-43eef8b24ce9")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,11 +1,13 @@
 ﻿using Mmu.Wss.Application.Areas.EventPublishing.Services;
 using Mmu.Wss.Application.Areas.EventPublishing.Services.Implementation;
-using Mmu.Wss.Application.Areas.WindowsEventListening.Services;
-using Mmu.Wss.Application.Areas.WindowsEventListening.Services.Implementation;
-using Mmu.Wss.Application.Infrastructure.WindowsNative.KeyHooks.Factories;
-using Mmu.Wss.Application.Infrastructure.WindowsNative.KeyHooks.Factories.Implementation;
-using Mmu.Wss.Application.Infrastructure.WindowsNative.KeyHooks.Factories.Servants;
-using Mmu.Wss.Application.Infrastructure.WindowsNative.KeyHooks.Factories.Servants.Implementation;
+using Mmu.Wss.Application.Areas.EventPublishing.Services.Servants;
+using Mmu.Wss.Application.Areas.EventPublishing.Services.Servants.Implementation;
+using Mmu.Wss.Application.Areas.EventReceiving.Services;
+using Mmu.Wss.Application.Areas.EventRegistrations.Common.Services;
+using Mmu.Wss.Application.Areas.WindowsNativeListening.Services;
+using Mmu.Wss.Application.Areas.WindowsNativeListening.Services.Implementation;
+using Mmu.Wss.Application.Infrastructure.Logging;
+using Mmu.Wss.Application.Infrastructure.Logging.Implementation;
 using StructureMap;
 
 namespace Mmu.Wss.Application.Infrastructure.DependencyInjection
@@ -18,15 +20,18 @@ namespace Mmu.Wss.Application.Infrastructure.DependencyInjection
                 scanner =>
                 {
                     scanner.AssembliesAndExecutablesFromApplicationBaseDirectory();
+                    scanner.AddAllTypesOf<EventRegistrationService>();
+                    scanner.AddAllTypesOf(typeof(IEventReceiver<>));
+                    scanner.LookForRegistries();
                     scanner.WithDefaultConventions();
                 });
 
             For<IEventPublishingService>().Use<EventPublishingService>().Singleton();
-            For<IWindowsEventListenerService>().Use<WindowsEventListenerService>().Singleton();
-            For<IWindowsKeyboardInputFactory>().Use<WindowsKeyboardInputFactory>().Singleton();
-            For<IModifierOptionsFactory>().Use<ModifierOptionsFactory>().Singleton();
-            For<ILockOptionsFactory>().Use<LockOptionsFactory>().Singleton();
-            For<IKeyboardInputKeyMappingServant>().Use<KeyboardInputKeyMappingServant>().Singleton();
+            For<IEventReceiverFactory>().Use<EventReceiverFactory>().Singleton();
+            For<INativeInputListener>().Use<NativeInputListener>().Singleton();
+
+            // Infrastructure
+            For<IWssLoggingService>().Use<WssLoggingService>().Singleton();
         }
     }
 }

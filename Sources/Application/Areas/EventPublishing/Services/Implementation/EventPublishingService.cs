@@ -1,24 +1,32 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Mmu.Wss.Application.Areas.EventPublishing.Models;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.MouseHooking.Domain.Models;
+using Mmu.Wss.Application.Areas.EventPublishing.Services.Servants;
 
 namespace Mmu.Wss.Application.Areas.EventPublishing.Services.Implementation
 {
     internal class EventPublishingService : IEventPublishingService
     {
-        private readonly IEventSubscriber[] _eventSubscribers;
+        private readonly IEventReceiverFactory _eventReceiverFactory;
 
-        public EventPublishingService(IEventSubscriber[] eventSubscribers)
+        public EventPublishingService(IEventReceiverFactory eventReceiverFactory)
         {
-            _eventSubscribers = eventSubscribers;
+            _eventReceiverFactory = eventReceiverFactory;
         }
 
-        public async Task PublishAsync(KeyboardInputNotification notification)
+        public async Task PublishKeyboardEventAsync(KeyboardInput keyboardInput)
         {
-            var tasks = _eventSubscribers
-                .Where(subs => subs.NotificationConfiguration.CheckIfNotificationIsApplicable(notification))
-                .Select(subs => subs.Receive(notification));
-            await Task.WhenAll(tasks);
+            var receivers = _eventReceiverFactory.CreateApplicableKeyboardReceivers(keyboardInput);
+            var receivingTasks = receivers.Select(r => r.ReceiveAsync(keyboardInput));
+            await Task.WhenAll(receivingTasks);
+        }
+
+        public async Task PublishMouseEventAsync(MouseInput mouseInput)
+        {
+            var receivers = _eventReceiverFactory.CreateApplicableMouseReceivers(mouseInput);
+            var receivingTasks = receivers.Select(r => r.ReceiveAsync(mouseInput));
+            await Task.WhenAll(receivingTasks);
         }
     }
 }
