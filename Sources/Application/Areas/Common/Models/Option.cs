@@ -40,7 +40,7 @@
             return ToOption(optionValue);
         }
 
-        public static Option<T> ToOption(T optionValue)
+        public static Option<TOpt> ToOption<TOpt>(TOpt optionValue)
         {
             return Option.CreateApplicible(optionValue);
         }

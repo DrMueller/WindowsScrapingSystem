@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
@@ -10,6 +11,7 @@ using Mmu.Wss.Application.Areas.EventRegistrations.MouseEventConfigurations;
 
 namespace Mmu.Wss.Application.Areas.EventPublishing.Services.Servants.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "DI")]
     internal class EventReceiverFactory : IEventReceiverFactory
     {
         private readonly IProvisioningService _provisioningService;
