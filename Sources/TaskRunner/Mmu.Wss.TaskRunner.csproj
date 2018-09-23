@@ -64,6 +64,10 @@
       <Project>{5961FAC1-434E-4345-897A-ECD21B90BCDD}</Project>
       <Name>Mmu.Wss.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestListener\Mmu.Wss.TestListener.csproj">
+      <Project>{6fbf0974-0e44-4850-a17c-0ea835f962ad}</Project>
+      <Name>Mmu.Wss.TestListener</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="M.ico" />

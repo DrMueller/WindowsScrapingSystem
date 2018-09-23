@@ -1,5 +1,5 @@
-﻿using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.MouseHooking.Domain.Models;
-using Mmu.Wss.Application.Areas.Common.Models;
+﻿using Mmu.Mlh.LanguageExtensions.Areas.Types.Options;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.MouseHooking.Domain.Models;
 using Mmu.Wss.Application.Areas.EventRegistrations.Common.Models;
 
 namespace Mmu.Wss.Application.Areas.EventRegistrations.MouseEventConfigurations
@@ -17,7 +17,7 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.MouseEventConfigurations
 
         internal bool CheckIfApplicable(MouseInput mouseInput)
         {
-            return InputKey == mouseInput.InputKey && InputDirection.CheckIfEquals(mouseInput.Direction);
+            return InputKey == mouseInput.InputKey && InputDirection == mouseInput.Direction;
         }
     }
 }

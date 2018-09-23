@@ -1,5 +1,5 @@
-﻿using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
-using Mmu.Wss.Application.Areas.Common.Models;
+﻿using Mmu.Mlh.LanguageExtensions.Areas.Types.Options;
+using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
 
 namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfigurations
 {
@@ -18,17 +18,17 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfiguratio
 
         internal bool CheckIfApplicable(LockOptions lockOptions)
         {
-            return ScollLockMustBeActive.CheckIfEquals(lockOptions.IsScrollLockActive) &&
-                NumLockMustBeActive.CheckIfEquals(lockOptions.IsNumLockActive) &&
-                CapsLockMustBeActive.CheckIfEquals(lockOptions.IsCapsLockActive);
+            return ScollLockMustBeActive == lockOptions.IsScrollLockActive &&
+                NumLockMustBeActive == lockOptions.IsNumLockActive &&
+                CapsLockMustBeActive == lockOptions.IsCapsLockActive;
         }
 
-        public static LockConfiguration CreateNotApplibable()
+        public static LockConfiguration CreateNotApplicable()
         {
             return new LockConfiguration(
-                Option.CreateNotApplicable<bool>(),
-                Option.CreateNotApplicable<bool>(),
-                Option.CreateNotApplicable<bool>());
+                Option.CreateNotApplicable<bool>(true),
+                Option.CreateNotApplicable<bool>(true),
+                Option.CreateNotApplicable<bool>(true));
         }
     }
 }

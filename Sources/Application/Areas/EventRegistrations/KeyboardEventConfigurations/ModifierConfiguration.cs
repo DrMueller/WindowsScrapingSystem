@@ -1,6 +1,6 @@
 ﻿using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Options;
 using Mmu.Mlh.NetFrameworkExtensions.Areas.Hooking.KeyboardHooking.Domain.Models;
-using Mmu.Wss.Application.Areas.Common.Models;
 
 namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfigurations
 {
@@ -23,17 +23,17 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfiguratio
 
         internal bool CheckIfApplicable(ModifierOptions modifierOptions)
         {
-            return CtrlMustBepressed.CheckIfEquals(modifierOptions.IsCtrlPressed) &&
-                ShiftMustBePressed.CheckIfEquals(modifierOptions.IsShiftPressed) &&
-                AltMustBePressed.CheckIfEquals(modifierOptions.IsAltPressed);
+            return CtrlMustBepressed == modifierOptions.IsCtrlPressed &&
+                ShiftMustBePressed == modifierOptions.IsShiftPressed &&
+                AltMustBePressed == modifierOptions.IsAltPressed;
         }
 
         public static ModifierConfiguration CreateNotApplibable()
         {
             return new ModifierConfiguration(
-                Option.CreateNotApplicable<bool>(),
-                Option.CreateNotApplicable<bool>(),
-                Option.CreateNotApplicable<bool>());
+                Option.CreateNotApplicable<bool>(true),
+                Option.CreateNotApplicable<bool>(true),
+                Option.CreateNotApplicable<bool>(true));
         }
     }
 }

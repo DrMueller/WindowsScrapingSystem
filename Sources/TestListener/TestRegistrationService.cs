@@ -15,7 +15,7 @@ namespace Mmu.Wss.TestListener
                 () => new KeyboardEventConfiguration(
                     new KeyboardInputKeyConfiguration(KeyboardInputKey.A),
                     new ModifierConfiguration(false, false, false),
-                    LockConfiguration.CreateNotApplibable()));
+                    LockConfiguration.CreateNotApplicable()));
 
             ForKeyboardInput<Test2KeyboardReceiver>(
                 () => new KeyboardEventConfiguration(
