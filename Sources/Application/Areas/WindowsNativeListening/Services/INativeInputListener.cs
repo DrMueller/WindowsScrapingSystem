@@ -3,7 +3,5 @@
     internal interface INativeInputListener
     {
         void StartListening();
-
-        void StopListening();
     }
 }

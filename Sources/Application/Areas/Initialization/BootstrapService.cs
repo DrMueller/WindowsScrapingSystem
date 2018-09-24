@@ -19,10 +19,5 @@ namespace Mmu.Wss.Application.Areas.Initialization
             loggingService.LogLoadedRegistrationServices();
             _nativeInputListener.StartListening();
         }
-
-        public static void Stop()
-        {
-            _nativeInputListener.StopListening();
-        }
     }
 }

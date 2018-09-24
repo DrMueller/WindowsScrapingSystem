@@ -21,11 +21,11 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfiguratio
             AltMustBePressed = altMustBePressed;
         }
 
-        internal bool CheckIfApplicable(ModifierOptions modifierOptions)
+        internal bool CheckIfApplicable(KeyboardInputModifiers inputModifiers)
         {
-            return CtrlMustBepressed == modifierOptions.IsCtrlPressed &&
-                ShiftMustBePressed == modifierOptions.IsShiftPressed &&
-                AltMustBePressed == modifierOptions.IsAltPressed;
+            return CtrlMustBepressed == inputModifiers.IsCtrlPressed &&
+                ShiftMustBePressed == inputModifiers.IsShiftPressed &&
+                AltMustBePressed == inputModifiers.IsAltPressed;
         }
 
         public static ModifierConfiguration CreateNotApplibable()

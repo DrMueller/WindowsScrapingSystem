@@ -10,9 +10,8 @@ namespace Mmu.Wss.TestListener
         public Task ReceiveAsync(MouseInput input)
         {
             var sb = new StringBuilder();
-
-            sb.AppendLine($"Key: {input.InputKey}");
-            sb.AppendLine($"Direction: {input.Direction}");
+            sb.AppendLine("TestMouseReceiver");
+            sb.AppendLine(input.CreateOverview());
 
             FileWriter.Write(sb.ToString());
 

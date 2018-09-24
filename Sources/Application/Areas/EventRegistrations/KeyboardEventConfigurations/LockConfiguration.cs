@@ -16,11 +16,11 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfiguratio
             CapsLockMustBeActive = capsLockMustBeActive;
         }
 
-        internal bool CheckIfApplicable(LockOptions lockOptions)
+        internal bool CheckIfApplicable(KeyboardInputLocks inputLocks)
         {
-            return ScollLockMustBeActive == lockOptions.IsScrollLockActive &&
-                NumLockMustBeActive == lockOptions.IsNumLockActive &&
-                CapsLockMustBeActive == lockOptions.IsCapsLockActive;
+            return ScollLockMustBeActive == inputLocks.IsScrollLockActive &&
+                NumLockMustBeActive == inputLocks.IsNumLockActive &&
+                CapsLockMustBeActive == inputLocks.IsCapsLockActive;
         }
 
         public static LockConfiguration CreateNotApplicable()

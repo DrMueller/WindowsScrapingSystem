@@ -24,8 +24,8 @@ namespace Mmu.Wss.Application.Areas.EventRegistrations.KeyboardEventConfiguratio
         public bool CheckIfApplicable(KeyboardInput input)
         {
             return InputKeyConfiguration.CheckIfApplicable(input.InputKey) &&
-                ModifierConfiguration.CheckIfApplicable(input.ModifierOptions) &&
-                LockConfiguration.CheckIfApplicable(input.LockOptions);
+                ModifierConfiguration.CheckIfApplicable(input.Modifiers) &&
+                LockConfiguration.CheckIfApplicable(input.Locks);
         }
     }
 }
